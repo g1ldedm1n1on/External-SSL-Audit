@@ -8,3 +8,39 @@ ssllabs-scan --quiet --hostfile=mydomain.txt --ignore-mismatch=true --hostcheck=
 Parse Json Data:
 cat mydomain.json | ./ssllabparser_toxslxv2.py
 
+Currently Captures in Spreadsheet:
+
+Currently Captures in the spreadsheet:
+
+•	Site Name
+•	Port
+•	IP
+•	SSL Labs Grade
+•	Certificate Issuer
+•	Certificate Expiration
+•	Certificate MD5 Hash
+•	Certificate Size
+•	Certificate Algorithm
+•	Certificate Strength
+•	HeartBleed
+•	HeartBeat
+•	CCS
+•	Poodle
+•	Fallback SCSV
+•	Freak
+•	Logjam
+•	Supports RC4
+•	BEAST
+•	Insecure Renegotiation
+•	Server Signatures
+•	SSL v2
+•	SSL v3
+•	TLS 1.0
+•	TLS 1.1
+•	TLS 1.2
+•	HSTS Present
+•	HSTS Max Age
+•	HSTS Subdomains
+•	HSTS PreEnabled
+
+*Contains a second worksheet with automatically generated tables for producing graphs.
