@@ -1,6 +1,8 @@
 # External-SSL-Audit
 Script that will utilize the output from SSL Labs API json and parse the data into a spreadsheet for easy viewing and reporting.  Requires SSL Labs Scanner that can be found here:  https://github.com/ssllabs/ssllabs-scan
 
+You can find an overview of using this here:  https://sec.mn/Archive/2016/April-Assessing_External_SSL.pdf
+
 Usage:
 Capture Json data using ssllabs-scan:
 ssllabs-scan --quiet --hostfile=mydomain.txt --ignore-mismatch=true --hostcheck=false > mydomain.json
