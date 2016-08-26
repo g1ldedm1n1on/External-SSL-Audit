@@ -47,7 +47,8 @@ worksheet.set_column('S:S', 19)
 worksheet.set_column('AA:AA', 14)
 worksheet.set_column('AB:AB', 15)
 worksheet.set_column('AC:AC', 16)
-worksheet.set_column('AD:AD', 15)
+worksheet.set_column('AD:AD', 20)
+worksheet.set_column('AF:AF', 40)
 
 
 # write column headers
@@ -81,8 +82,10 @@ worksheet.write('AA1', 'HSTS Enabled', bold)
 worksheet.write('AB1', 'HSTS Max_Age', bold)
 worksheet.write('AC1', 'HSTS Subdomains', bold)
 worksheet.write('AD1', 'HSTS PreEnabled', bold)
+worksheet.write('AE1', 'Sweet32 Vulnerable', bold)
+worksheet.write('AF1', "Sweet32 Cipher", bold)
 worksheet.freeze_panes(1, 0)
-worksheet.autofilter('A1:AD1')
+worksheet.autofilter('A1:AF1')
 #set default starting places
 row = 1
 col = 0
@@ -142,6 +145,7 @@ worksheet2.write('A30', 'Logjam')
 worksheet2.write('A31', 'Supports RC4')
 worksheet2.write('A32', 'BEAST')
 worksheet2.write('A33', 'Insecure Renegotiation')
+worksheet2.write('A34', 'Sweet32')
 
 
 
@@ -235,6 +239,26 @@ for site in data:
 					tls12 = "X"
 				elif cipher == "SSL 2.0":
 					ssl2 = "X"
+
+			#loop through and identfiy suites
+			
+			suites = endpoints[0]['details']['suites']['list']
+			ciphername = ""
+			cipherfull = ""
+			sweet32 = ""
+			sweet32vuln = ""
+
+			for ciphername in suites:
+				#print ciphername
+				cipherfull = ciphername['name'] + " " + str(ciphername['cipherStrength'])
+				
+				if "DES" in ciphername['name']:
+					sweet32 = cipherfull
+					sweet32vuln = "X"
+				else:
+					pass
+
+
 			
 			# parse singature and handle where there isn't any or any returned
 			if "serverSignature" in endpoints[0]['details']:
@@ -285,6 +309,8 @@ for site in data:
 			worksheet.write(row, col + 27, hstsage)
 			worksheet.write(row, col + 28, stssub)
 			worksheet.write(row, col + 29, stspre)
+			worksheet.write(row, col + 30, sweet32vuln)
+			worksheet.write(row, col + 31, sweet32)
 			row += 1
 
 
@@ -324,6 +350,7 @@ for site in data:
 		worksheet2.write_formula('B31', '=COUNTIF(Results!R2:R10000, "True")')
 		worksheet2.write_formula('B32', '=COUNTIF(Results!S2:S10000, "True")')
 		worksheet2.write_formula('B33', '=COUNTIF(Results!T2:T10000, "Secure Renegotiation Allowed Possible DoS")')
+		worksheet2.write_formula('B34', '=COUNTIF(Results!AE2:AE10000, "X")')
 
 
 
