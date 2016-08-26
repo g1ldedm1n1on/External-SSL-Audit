@@ -48,7 +48,7 @@ worksheet.set_column('AA:AA', 14)
 worksheet.set_column('AB:AB', 15)
 worksheet.set_column('AC:AC', 16)
 worksheet.set_column('AD:AD', 20)
-worksheet.set_column('AE:AE', 30)
+worksheet.set_column('AE:AE', 20)
 worksheet.set_column('AF:AF', 40)
 
 
